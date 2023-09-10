@@ -1,22 +1,27 @@
-from ingredient import Ingredient
-from recipe import Recipe
+import os
+import time
+from ingredients import Ingredient
+from recipes import Recipe
 from menus import main_menu, ingredients_menu, recipes_menu, shopping_list_menu
 
 def main():
+    saved_ingredients = []
     while True:
         main_choice = main_menu()
         match main_choice:
             case '1':
-                ingredient_choice = ingredients_menu()
-                match ingredient_choice:
-                    case '1': # add new ingredient
-                        pass
-                    case '2': # view saved ingredients
-                        pass
-                    case '3': # edit ingredient unit
-                        pass
-                    # case '4':
-                    #     pass
+                while True:
+                    ingredient_choice = ingredients_menu()
+                    match ingredient_choice:
+                        case '1': # add new ingredient
+                            os.system('clear')
+                            create_ingredient(saved_ingredients)
+                        case '2': # view saved ingredients
+                            pass
+                        case '3': # edit ingredient unit
+                            pass
+                        case '4':
+                            break
             case '2':
                 recipe_choice = recipes_menu()
                 match recipe_choice:
@@ -42,6 +47,15 @@ def main():
             case '4':
                 print("\nGoodbye!")
                 break
+
+def create_ingredient(ingredient_list):
+    new_ingredient = Ingredient()
+    if [ing for ing in ingredient_list if ing["name"] == new_ingredient.name]:
+        print("\nIngredient already exists!")
+        time.sleep(2)
+    else:
+        new_ingredient.update_unit()
+        new_ingredient.add_to_list(ingredient_list)
 
 
 
