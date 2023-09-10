@@ -17,7 +17,8 @@ def main():
                             os.system('clear')
                             create_ingredient(saved_ingredients)
                         case '2': # view saved ingredients
-                            pass
+                            os.system('clear')
+                            list_ingredients(saved_ingredients)
                         case '3': # edit ingredient unit
                             pass
                         case '4':
@@ -56,6 +57,11 @@ def create_ingredient(ingredient_list):
     else:
         new_ingredient.update_unit()
         new_ingredient.add_to_list(ingredient_list)
+
+def list_ingredients(ingredient_list):
+    for ing in ingredient_list:
+        print(ing)
+    input('\nPress any key to return to menu\n')
 
 
 
