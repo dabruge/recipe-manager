@@ -20,7 +20,8 @@ def main():
                             os.system('clear')
                             list_ingredients(saved_ingredients)
                         case '3': # edit ingredient unit
-                            pass
+                            os.system('clear')
+                            edit_unit(saved_ingredients)
                         case '4':
                             break
             case '2':
@@ -51,7 +52,7 @@ def main():
 
 def create_ingredient(ingredient_list):
     new_ingredient = Ingredient()
-    if [ing for ing in ingredient_list if ing["name"] == new_ingredient.name]:
+    if [ingr for ingr in ingredient_list if ingr["name"] == new_ingredient.name]:
         print("\nIngredient already exists!")
         time.sleep(2)
     else:
@@ -59,9 +60,15 @@ def create_ingredient(ingredient_list):
         new_ingredient.add_to_list(ingredient_list)
 
 def list_ingredients(ingredient_list):
-    for ing in ingredient_list:
-        print(ing)
+    for ingr in ingredient_list:
+        print(ingr)
     input('\nPress any key to return to menu\n')
+
+def edit_unit(ingredient_list):
+    ingr_to_update = input("\nPlease enter the ingredient to change the unit of:\n")
+    if [ingr for ingr in ingredient_list if ingr["name"] == ingr_to_update]:
+        #might have to change how ingredients are stored - changed from dicts back to objects so can update unit easily
+        pass
 
 
 
