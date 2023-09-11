@@ -25,29 +25,35 @@ def main():
                         case '4':
                             break
             case '2':
-                recipe_choice = recipes_menu()
-                match recipe_choice:
-                    case '1': # add new recipe
-                        pass
-                    case '2': # view saved recipes
-                        pass
-                    case '3': # delete recipe
-                        pass
-                    # case '4':
-                    #     pass
+                while True:
+                    recipe_choice = recipes_menu()
+                    match recipe_choice:
+                        case '1': # add new recipe
+                            pass
+                        case '2': # view saved recipes
+                            pass
+                        case '3': # delete recipe
+                            pass
+                        case '4':
+                            break
             case '3':
-                list_choice = shopping_list_menu()
-                match list_choice:
-                    case '1': # select recipe
-                        pass
-                    case '2': # view selected recipes
-                        pass
-                    case '3': # view shopping list
-                        pass
-                    # case '4':
-                    #     pass
+                while True:
+                    list_choice = shopping_list_menu()
+                    match list_choice:
+                        case '1': # select recipe
+                            pass
+                        case '2': # view selected recipes
+                            pass
+                        case '3': # view shopping list
+                            pass
+                        case '4':
+                            break
             case '4':
-                print("\nGoodbye!")
+                os.system('clear')
+                print("\nClosing the program\n")
+                print("\nGoodbye!\n")
+                time.sleep(1.5)
+                os.system('clear')
                 break
 
 def create_ingredient(ingredient_list):
@@ -75,10 +81,6 @@ def edit_unit(ingredient_list):
             return
     print(f"\nIngredient '{ingr_to_update}' does not exist!")
     time.sleep(1.5)
-        
-    # else:
-    #     print("\nIngredient does not exist!")
-
 
 
 if __name__ == "__main__":
