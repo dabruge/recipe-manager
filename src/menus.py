@@ -26,13 +26,14 @@ def ingredients_menu():
 
 def recipes_menu():
     choice = ''
-    while choice not in ['1', '2', '3', '4']:
+    while choice not in ['1', '2', '3', '4', '5']:
         os.system('clear')
         print("Recipes menu\n")
         print("1. Add new recipe")
         print("2. View saved recipes")
-        print("3. Delete recipe")
-        print("4. Back to main menu")
+        print("3. Edit recipe")
+        print("4. Delete recipe")
+        print("5. Back to main menu")
         choice = input("\nPlease enter number of menu selection:\n")
     return choice
 
