@@ -3,5 +3,5 @@ class Recipe:
         self.name = name
         self.ingredients = []
     
-    def add_ingredient(self, ingredient_name, ingredient_unit, quantity):
-        self.ingredients.append({"name": ingredient_name, "unit": ingredient_unit, "quantity": quantity})
+    def add_ingredient(self, ingredient, quantity):
+        self.ingredients.append({"ingredient": ingredient, "quantity": quantity})

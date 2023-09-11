@@ -52,23 +52,32 @@ def main():
 
 def create_ingredient(ingredient_list):
     new_ingredient = Ingredient()
-    if [ingr for ingr in ingredient_list if ingr["name"] == new_ingredient.name]:
-        print("\nIngredient already exists!")
-        time.sleep(2)
+    if [ingr for ingr in ingredient_list if ingr.name == new_ingredient.name]:
+        print(f"\nIngredient '{new_ingredient.name}' already exists!")
+        time.sleep(1.5)
     else:
         new_ingredient.update_unit()
         new_ingredient.add_to_list(ingredient_list)
 
 def list_ingredients(ingredient_list):
     for ingr in ingredient_list:
-        print(ingr)
+        print(f"{ingr.name}     ({ingr.unit})")
     input('\nPress any key to return to menu\n')
 
 def edit_unit(ingredient_list):
+    # this function might later need updating to iterate over recipes that use it to make units consistent
     ingr_to_update = input("\nPlease enter the ingredient to change the unit of:\n")
-    if [ingr for ingr in ingredient_list if ingr["name"] == ingr_to_update]:
-        #might have to change how ingredients are stored - changed from dicts back to objects so can update unit easily
-        pass
+    for ingr in ingredient_list:
+        if ingr.name == ingr_to_update:
+            ingr.unit = input(f"\nPlease enter new unit for {ingr.name} (currently {ingr.unit}):\n")
+            print("\nUnit updated!")
+            time.sleep(1.5)
+            return
+    print(f"\nIngredient '{ingr_to_update}' does not exist!")
+    time.sleep(1.5)
+        
+    # else:
+    #     print("\nIngredient does not exist!")
 
 
 

@@ -7,4 +7,4 @@ class Ingredient:
         self.unit = input(f"Enter unit for {self.name}:\n").lower()
 
     def add_to_list(self, list):
-        list.append({"name": self.name, "unit": self.unit})
+        list.append(self)
