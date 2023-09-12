@@ -32,9 +32,9 @@ def create_recipe(recipe_list, ingredient_list):
                 new_recipe.add_ingredient(existing_ingr[0], ingr_qty)
             else:
                 # ingredient does not exist
-                print(f"\nIngredient '{ingr_name}' does not exist! Create ingredient now:\n")
-                new_ingredient = create_ingredient(ingredient_list)
-                ingr_qty = input(f"\nEnter quantity for {ingr_name} (in {new_ingredient.unit}):\n")
+                print(f"\nIngredient '{ingr_name}' does not exist! Adding ingredient now:\n")
+                new_ingredient = create_ingredient(ingredient_list, ingr_name)
+                ingr_qty = input(f"\nEnter quantity of {ingr_name} (in {new_ingredient.unit}) for {new_recipe.name}:\n")
                 new_recipe.add_ingredient(new_ingredient, ingr_qty)
 
             while choice not in ['y', 'n']:
@@ -45,3 +45,8 @@ def create_recipe(recipe_list, ingredient_list):
                     add_more_ingr = False
     new_recipe.add_to_list(recipe_list)
 
+
+def list_recipes(recipe_list):
+    for recipe in recipe_list:
+        print(recipe.name)
+    input('\nPress any key to return to menu\n')

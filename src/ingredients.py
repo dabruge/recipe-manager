@@ -12,8 +12,12 @@ class Ingredient:
         list.append(self)
 
 
-def create_ingredient(ingredient_list):
-    ingr_name = input("Enter ingredient name:\n").lower()
+def create_ingredient(ingredient_list, given_ingr=False):
+    if given_ingr:
+        ingr_name = given_ingr
+    else:
+        ingr_name = input("Enter ingredient name:\n").lower()
+        
     if [ingr for ingr in ingredient_list if ingr.name == ingr_name]:
         print(f"\nIngredient '{ingr_name}' already exists!")
         time.sleep(1.5)

@@ -1,7 +1,7 @@
 import os
 import time
 from ingredients import Ingredient, create_ingredient, list_ingredients, edit_unit
-from recipes import Recipe, create_recipe
+from recipes import Recipe, create_recipe, list_recipes
 from menus import main_menu, ingredients_menu, recipes_menu, shopping_list_menu
 
 def main():
@@ -33,7 +33,8 @@ def main():
                             os.system('clear')
                             create_recipe(saved_recipes, saved_ingredients)
                         case '2': # view saved recipes
-                            pass
+                            os.system('clear')
+                            list_recipes(saved_recipes)
                         case '3': # edit recipe
                             pass
                         case '4': # delete recipe
