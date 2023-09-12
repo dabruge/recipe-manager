@@ -18,13 +18,14 @@ def create_recipe(recipe_list, ingredient_list):
     # might need to refactor so same ingredient cant appear in receipe twice
     add_more_ingr = True
     recipe_name = input("Enter recipe name:\n").lower()
+    new_recipe = Recipe(recipe_name)
+    new_ingredient = ''
     while add_more_ingr:
         choice = ''
-        if [rec for rec in recipe_list if rec.name == recipe_name]:
+        if [rec for rec in recipe_list if rec.name == new_recipe.name]:
             print(f"\nRecipe '{recipe_name}' already exists! Use the Edit recipe option")
             time.sleep(1.5)
         else:
-            new_recipe = Recipe(recipe_name)
             ingr_name = input("\nEnter ingredient:\n")
             existing_ingr = [ingr for ingr in ingredient_list if ingr.name == ingr_name]
             if existing_ingr:
@@ -47,6 +48,35 @@ def create_recipe(recipe_list, ingredient_list):
 
 
 def list_recipes(recipe_list):
-    for recipe in recipe_list:
-        print(recipe.name)
-    input('\nPress any key to return to menu\n')
+    if recipe_list:
+        for recipe in recipe_list:
+            print(recipe.name.capitalize())
+    else:
+        print("No recipes saved")
+
+def edit_recipe(recipe_list):
+    if recipe_list:
+        chosen_recipe = ''
+        while True:
+            os.system('clear')
+            print("Recipes:\n")
+            list_recipes(recipe_list)
+            chosen_recipe = input("\nPlease enter recipe name to edit:\n").lower()
+            if chosen_recipe == 'exit':
+                break
+            if chosen_recipe not in [rec.name for rec in recipe_list if rec.name == chosen_recipe]:
+                print(f"\nRecipe '{chosen_recipe}' does not exist, choose an existing one!")
+                print("Or enter 'exit' to return to menu")
+                time.sleep(1)
+            else:
+                break
+        for recipe in recipe_list:
+            if recipe.name == chosen_recipe:
+                print(f"\n{recipe.name.capitalize()}\n")
+                for ingr in recipe.ingredients:
+                    print(ingr['quantity'], ingr['ingredient'].unit, ingr['ingredient'].name)
+                time.sleep(4)
+        
+    else:
+        print("No recipes saved")
+        time.sleep(1.5)

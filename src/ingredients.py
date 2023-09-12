@@ -17,7 +17,7 @@ def create_ingredient(ingredient_list, given_ingr=False):
         ingr_name = given_ingr
     else:
         ingr_name = input("Enter ingredient name:\n").lower()
-        
+
     if [ingr for ingr in ingredient_list if ingr.name == ingr_name]:
         print(f"\nIngredient '{ingr_name}' already exists!")
         time.sleep(1.5)
@@ -29,8 +29,11 @@ def create_ingredient(ingredient_list, given_ingr=False):
 
 
 def list_ingredients(ingredient_list):
-    for ingr in ingredient_list:
-        print(f"{ingr.name}     ({ingr.unit})")
+    if ingredient_list:
+        for ingr in ingredient_list:
+            print(f"{ingr.name.capitalize()}     ({ingr.unit})")
+    else:
+        print("No ingredients saved")
     input('\nPress any key to return to menu\n')
 
 
