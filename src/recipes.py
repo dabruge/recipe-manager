@@ -73,21 +73,23 @@ def edit_recipe(recipe_list):
                 break
         for recipe in recipe_list:
             if recipe.name == chosen_recipe:
-                print(f"\n{recipe.name.capitalize()}\n")
-                for ingr in recipe.ingredients:
-                    print(ingr['quantity'], ingr['ingredient'].unit, ingr['ingredient'].name)
                 while True:
-                    edit_recipe_choice = edit_recipe_menu()
+                    edit_recipe_choice = edit_recipe_menu(recipe.name)
                     match edit_recipe_choice:
                         case '1': # edit ingredient quantity
                             os.system('clear')
-                            pass
+                            edit_qty(recipe)
                         case '2': # delete ingredient
                             os.system('clear')
                             pass
                         case '3': # edit ingredient unit
                             break
-        
     else:
         print("No recipes saved")
         time.sleep(1.5)
+
+def edit_qty(recipe):
+    print(f"{recipe.name.capitalize()}\n")
+    for ingr in recipe.ingredients:
+        print(ingr['quantity'], ingr['ingredient'].unit, ingr['ingredient'].name)
+    
