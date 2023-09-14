@@ -1,6 +1,7 @@
 import os
 import time
 from ingredients import Ingredient, create_ingredient, list_ingredients, edit_unit
+from menus import edit_recipe_menu
 
 class Recipe:
     def __init__(self, name):
@@ -66,8 +67,8 @@ def edit_recipe(recipe_list):
                 break
             if chosen_recipe not in [rec.name for rec in recipe_list if rec.name == chosen_recipe]:
                 print(f"\nRecipe '{chosen_recipe}' does not exist, choose an existing one!")
-                print("Or enter 'exit' to return to menu")
-                time.sleep(1)
+                print("Or enter 'exit' to return to Recipe menu")
+                time.sleep(2)
             else:
                 break
         for recipe in recipe_list:
@@ -75,7 +76,17 @@ def edit_recipe(recipe_list):
                 print(f"\n{recipe.name.capitalize()}\n")
                 for ingr in recipe.ingredients:
                     print(ingr['quantity'], ingr['ingredient'].unit, ingr['ingredient'].name)
-                time.sleep(4)
+                while True:
+                    edit_recipe_choice = edit_recipe_menu()
+                    match edit_recipe_choice:
+                        case '1': # edit ingredient quantity
+                            os.system('clear')
+                            pass
+                        case '2': # delete ingredient
+                            os.system('clear')
+                            pass
+                        case '3': # edit ingredient unit
+                            break
         
     else:
         print("No recipes saved")

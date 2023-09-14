@@ -48,3 +48,14 @@ def shopping_list_menu():
         print("4. Back to main menu")
         choice = input("\nPlease enter number of menu selection:\n")
     return choice
+
+def edit_recipe_menu(recipe_name):
+    choice = ''
+    while choice not in ['1', '2', '3']:
+        os.system('clear')
+        print(f"Edit {recipe_name}\n")
+        print("1. Edit ingredient quantity")
+        print("2. Delete ingredient")
+        print("3. Back to Recipe menu")
+        choice = input("\nPlease enter number of menu selection:\n")
+    return choice
