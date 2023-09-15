@@ -84,7 +84,7 @@ def edit_recipe(recipe_list):
                             pass
                         case '3': # delete ingredient
                             os.system('clear')
-                            pass
+                            delete_ingredient(recipe)
                         case '4': # edit ingredient unit
                             break
     else:
@@ -113,4 +113,26 @@ def edit_qty(recipe):
             if ingr['ingredient'].name == chosen_ingr:
                 ingr['quantity'] = new_qty
     time.sleep(2)
-    
+
+def delete_ingredient(recipe):
+    while True:
+        os.system('clear')
+        print(f"{recipe.name.capitalize()}\n")
+        for ingr in recipe.ingredients:
+            print(ingr['quantity'], ingr['ingredient'].unit, ingr['ingredient'].name)
+        chosen_ingr = input("\nPlease enter ingredient to delete from recipe:\n").lower()
+        if chosen_ingr == 'exit':
+            break
+        ingr_instance = [ingr for ingr in recipe.ingredients if ingr['ingredient'].name == chosen_ingr]
+        if not ingr_instance:
+            print(f"\nIngredient '{chosen_ingr}' does not exist, choose an existing one!")
+            print("Or enter 'exit' to return to Edit Recipe menu")
+            time.sleep(2)
+        else:
+            for ingr in recipe.ingredients:
+                if ingr['ingredient'].name == chosen_ingr:
+                    recipe.ingredients.remove(ingr)
+            print(f"\n{chosen_ingr} removed!")
+            time.sleep(2)
+            break
+        
