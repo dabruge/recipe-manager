@@ -89,7 +89,25 @@ def edit_recipe(recipe_list):
         time.sleep(1.5)
 
 def edit_qty(recipe):
-    print(f"{recipe.name.capitalize()}\n")
-    for ingr in recipe.ingredients:
-        print(ingr['quantity'], ingr['ingredient'].unit, ingr['ingredient'].name)
+    while True:
+        os.system('clear')
+        print(f"{recipe.name.capitalize()}\n")
+        for ingr in recipe.ingredients:
+            print(ingr['quantity'], ingr['ingredient'].unit, ingr['ingredient'].name)
+        chosen_ingr = input("\nPlease enter ingredient to edit quantity of:\n").lower()
+        if chosen_ingr == 'exit':
+            break
+        ingr_instance = [ingr for ingr in recipe.ingredients if ingr['ingredient'].name == chosen_ingr]
+        if not ingr_instance:
+            print(f"\nIngredient '{chosen_ingr}' does not exist, choose an existing one!")
+            print("Or enter 'exit' to return to Edit Recipe menu")
+            time.sleep(2)
+        else:
+            break
+    if chosen_ingr != 'exit':
+        new_qty = input(f"\nPlease enter new quantity of {chosen_ingr} (in {ingr_instance[0]['ingredient'].unit}):\n")
+        for ingr in recipe.ingredients:
+            if ingr['ingredient'].name == chosen_ingr:
+                ingr['quantity'] = new_qty
+    time.sleep(2)
     
