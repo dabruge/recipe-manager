@@ -79,10 +79,13 @@ def edit_recipe(recipe_list):
                         case '1': # edit ingredient quantity
                             os.system('clear')
                             edit_qty(recipe)
-                        case '2': # delete ingredient
+                        case '2': # add ingredient
                             os.system('clear')
                             pass
-                        case '3': # edit ingredient unit
+                        case '3': # delete ingredient
+                            os.system('clear')
+                            pass
+                        case '4': # edit ingredient unit
                             break
     else:
         print("No recipes saved")

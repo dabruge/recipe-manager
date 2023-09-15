@@ -51,11 +51,12 @@ def shopping_list_menu():
 
 def edit_recipe_menu(recipe_name):
     choice = ''
-    while choice not in ['1', '2', '3']:
+    while choice not in ['1', '2', '3', '4']:
         os.system('clear')
         print(f"Edit {recipe_name}\n")
         print("1. Edit ingredient quantity")
-        print("2. Delete ingredient")
-        print("3. Back to Recipe menu")
+        print("2. Add ingredient")
+        print("3. Delete ingredient")
+        print("4. Back to Recipe menu")
         choice = input("\nPlease enter number of menu selection:\n")
     return choice
