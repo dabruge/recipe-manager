@@ -97,7 +97,7 @@ def edit_qty(recipe):
         print(f"{recipe.name.capitalize()}\n")
         for ingr in recipe.ingredients:
             print(ingr['quantity'], ingr['ingredient'].unit, ingr['ingredient'].name)
-        chosen_ingr = input("\nPlease enter ingredient to edit quantity of:\n").lower()
+        chosen_ingr = input("\nPlease enter ingredient to edit quantity of (or 'exit' to cancel):\n").lower()
         if chosen_ingr == 'exit':
             break
         ingr_instance = [ingr for ingr in recipe.ingredients if ingr['ingredient'].name == chosen_ingr]
@@ -119,8 +119,8 @@ def delete_ingredient(recipe):
         os.system('clear')
         print(f"{recipe.name.capitalize()}\n")
         for ingr in recipe.ingredients:
-            print(ingr['quantity'], ingr['ingredient'].unit, ingr['ingredient'].name)
-        chosen_ingr = input("\nPlease enter ingredient to delete from recipe:\n").lower()
+            print(ingr['quantity'], ingr['ingredient'].unit, ingr['ingredient'].name) # maybe change listing ingredients to a Recipe method
+        chosen_ingr = input("\nPlease enter ingredient to delete from recipe (or 'exit' to cancel):\n").lower()
         if chosen_ingr == 'exit':
             break
         ingr_instance = [ingr for ingr in recipe.ingredients if ingr['ingredient'].name == chosen_ingr]
@@ -132,7 +132,28 @@ def delete_ingredient(recipe):
             for ingr in recipe.ingredients:
                 if ingr['ingredient'].name == chosen_ingr:
                     recipe.ingredients.remove(ingr)
-            print(f"\n{chosen_ingr} removed!")
+            print(f"\n{chosen_ingr.capitalize()} removed!")
             time.sleep(2)
             break
-        
+
+def delete_recipe(recipe_list):
+    while True:
+        os.system('clear')
+        print("Saved recipes:\n")
+        list_recipes(recipe_list)
+        recipe_to_delete = input("\nPlease enter name of recipe to delete (or 'exit' to cancel):\n").lower()
+        if recipe_to_delete == 'exit':
+            break
+        recipe_instance = [recipe for recipe in recipe_list if recipe.name == recipe_to_delete]
+        if not recipe_instance:
+            print(f"\nRecipe '{recipe_to_delete}' does not exist, choose an existing one!")
+            print("Or enter 'exit' to return to Recipe menu")
+            time.sleep(2)
+        else:
+            for recipe in recipe_list:
+                if recipe.name == recipe_to_delete:
+                    recipe_list.remove(recipe)
+            print(f"\n{recipe_to_delete.capitalize()} removed!")
+            time.sleep(2)
+            break
+            

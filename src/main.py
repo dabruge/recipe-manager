@@ -1,7 +1,7 @@
 import os
 import time
 from ingredients import Ingredient, create_ingredient, list_ingredients, edit_unit
-from recipes import Recipe, create_recipe, list_recipes, edit_recipe
+from recipes import Recipe, create_recipe, list_recipes, edit_recipe, delete_recipe
 from menus import main_menu, ingredients_menu, recipes_menu, shopping_list_menu
 
 def main():
@@ -35,12 +35,13 @@ def main():
                         case '2': # view saved recipes
                             os.system('clear')
                             list_recipes(saved_recipes)
-                            input('\nPress any key to return to menu\n')
+                            input('\nPress any key to return to menu\n') # be able to type in recipe name to view ingredients?
                         case '3': # edit recipe
                             os.system('clear')
                             edit_recipe(saved_recipes)
                         case '4': # delete recipe
-                            pass
+                            os.system('clear')
+                            delete_recipe(saved_recipes)
                         case '5':
                             break
             case '3':
@@ -62,6 +63,8 @@ def main():
                 time.sleep(1.5)
                 os.system('clear')
                 break
+
+            # Add ability to search for any recipe that contains a particular ingredient?
 
 
 if __name__ == "__main__":
