@@ -2,11 +2,13 @@ import os
 import time
 from ingredients import Ingredient, create_ingredient, list_ingredients, edit_unit
 from recipes import Recipe, create_recipe, list_recipes, edit_recipe, delete_recipe
+from shopping import select_recipe
 from menus import main_menu, ingredients_menu, recipes_menu, shopping_list_menu
 
 def main():
     saved_ingredients = []
     saved_recipes = []
+    chosen_recipes = []
     while True:
         main_choice = main_menu()
         match main_choice:
@@ -34,6 +36,7 @@ def main():
                             create_recipe(saved_recipes, saved_ingredients)
                         case '2': # view saved recipes
                             os.system('clear')
+                            print("Saved recipes:\n")
                             list_recipes(saved_recipes)
                             input('\nPress any key to return to menu\n') # be able to type in recipe name to view ingredients?
                         case '3': # edit recipe
@@ -49,7 +52,8 @@ def main():
                     list_choice = shopping_list_menu()
                     match list_choice:
                         case '1': # select recipe
-                            pass
+                            os.system('clear')
+                            select_recipe(saved_recipes, chosen_recipes)
                         case '2': # view selected recipes
                             pass
                         case '3': # view shopping list
