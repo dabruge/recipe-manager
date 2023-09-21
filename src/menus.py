@@ -39,13 +39,14 @@ def recipes_menu():
 
 def shopping_list_menu():
     choice = ''
-    while choice not in ['1', '2', '3', '4']:
+    while choice not in ['1', '2', '3', '4', '5']:
         os.system('clear')
         print("Shopping list menu\n")
         print("1. Select recipe")
         print("2. View selected recipes")
         print("3. View shopping list")
-        print("4. Back to main menu")
+        print("4. Remove recipe from shopping list")
+        print("5. Back to main menu")
         choice = input("\nPlease enter number of menu selection:\n")
     return choice
 

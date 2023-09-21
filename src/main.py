@@ -55,10 +55,15 @@ def main():
                             os.system('clear')
                             select_recipe(saved_recipes, chosen_recipes)
                         case '2': # view selected recipes
-                            pass
+                            os.system('clear')
+                            print("Selected recipes for shopping list:\n")
+                            list_recipes(chosen_recipes)
+                            input('\nPress any key to return to menu\n')
                         case '3': # view shopping list
                             pass
                         case '4':
+                            pass
+                        case '5':
                             break
             case '4':
                 os.system('clear')

@@ -30,6 +30,7 @@ def create_recipe(recipe_list, ingredient_list):
             ingr_name = input("\nEnter ingredient:\n")
             existing_ingr = [ingr for ingr in ingredient_list if ingr.name == ingr_name]
             if existing_ingr:
+                new_ingredient = existing_ingr[0]
                 ingr_qty = input(f"\nEnter quantity for {ingr_name} (in {existing_ingr[0].unit}):\n")
                 new_recipe.add_ingredient(existing_ingr[0], ingr_qty)
             else:
@@ -41,7 +42,7 @@ def create_recipe(recipe_list, ingredient_list):
 
             while choice not in ['y', 'n']:
                 os.system('clear')
-                print(f"{new_ingredient.name} added for {new_recipe.name}\n")
+                print(f"{new_ingredient.name.capitalize()} added for {new_recipe.name.capitalize()}\n")
                 choice = input("Add another ingredient? [y/n]\n").lower()
                 if choice == 'n':
                     add_more_ingr = False
@@ -53,7 +54,7 @@ def list_recipes(recipe_list):
         for recipe in recipe_list:
             print(recipe.name.capitalize())
     else:
-        print("No recipes saved")
+        print("No recipes found")
 
 def edit_recipe(recipe_list):
     if recipe_list:

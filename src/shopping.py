@@ -21,6 +21,8 @@ def select_recipe(recipe_list, chosen_recipes):
         for recipe in recipe_list:
             if recipe.name == chosen_recipe:
                 chosen_recipes.append(recipe)
+                print(f"\n{recipe.name.capitalize()} added to shopping list!")
+                time.sleep(1.5)
     else:
         print("No recipes saved")
         time.sleep(1.5)
