@@ -41,7 +41,7 @@ def main():
                             input('\nPress any key to return to menu\n') # be able to type in recipe name to view ingredients?
                         case '3': # edit recipe
                             os.system('clear')
-                            edit_recipe(saved_recipes)
+                            edit_recipe(saved_recipes, saved_ingredients)
                         case '4': # delete recipe
                             os.system('clear')
                             delete_recipe(saved_recipes)

@@ -56,7 +56,7 @@ def list_recipes(recipe_list):
     else:
         print("No recipes found")
 
-def edit_recipe(recipe_list):
+def edit_recipe(recipe_list, ingredient_list):
     if recipe_list:
         chosen_recipe = ''
         while True:
@@ -82,7 +82,7 @@ def edit_recipe(recipe_list):
                             edit_qty(recipe)
                         case '2': # add ingredient
                             os.system('clear')
-                            pass
+                            add_ingredients(recipe, ingredient_list)
                         case '3': # delete ingredient
                             os.system('clear')
                             delete_ingredient(recipe)
@@ -114,6 +114,30 @@ def edit_qty(recipe):
             if ingr['ingredient'].name == chosen_ingr:
                 ingr['quantity'] = new_qty
     time.sleep(2)
+
+def add_ingredients(recipe, ingredient_list):
+    add_more_ingr = True
+    while add_more_ingr:
+        choice = ''
+        ingr_name = input("\nEnter ingredient:\n")
+        existing_ingr = [ingr for ingr in ingredient_list if ingr.name == ingr_name]
+        if existing_ingr:
+            new_ingredient = existing_ingr[0]
+            ingr_qty = input(f"\nEnter quantity for {ingr_name} (in {existing_ingr[0].unit}):\n")
+            recipe.add_ingredient(existing_ingr[0], ingr_qty)
+        else:
+            # ingredient does not exist
+            print(f"\nIngredient '{ingr_name}' does not exist! Adding ingredient now:\n")
+            new_ingredient = create_ingredient(ingredient_list, ingr_name)
+            ingr_qty = input(f"\nEnter quantity of {ingr_name} (in {new_ingredient.unit}) for {recipe.name}:\n")
+            recipe.add_ingredient(new_ingredient, ingr_qty)
+
+        while choice not in ['y', 'n']:
+            os.system('clear')
+            print(f"{new_ingredient.name.capitalize()} added for {recipe.name.capitalize()}\n")
+            choice = input("Add another ingredient? [y/n]\n").lower()
+            if choice == 'n':
+                add_more_ingr = False
 
 def delete_ingredient(recipe):
     while True:
