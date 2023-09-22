@@ -60,6 +60,9 @@ def edit_recipe(recipe_list, ingredient_list):
                             edit_qty(recipe)
                         case '2': # add ingredient
                             os.system('clear')
+                            print(f"{recipe.name.capitalize()}\n")
+                            for ingr in recipe.ingredients:
+                                print(ingr['quantity'], ingr['ingredient'].unit, ingr['ingredient'].name)
                             add_ingredients(recipe, ingredient_list)
                         case '3': # delete ingredient
                             os.system('clear')
