@@ -2,7 +2,7 @@ import os
 import time
 from ingredients import Ingredient, create_ingredient, list_ingredients, edit_unit
 from recipes import Recipe, create_recipe, list_recipes, edit_recipe, delete_recipe
-from shopping import select_recipe
+from shopping import select_recipe, view_shopping_list
 from menus import main_menu, ingredients_menu, recipes_menu, shopping_list_menu
 
 def main():
@@ -61,7 +61,8 @@ def main():
                             list_recipes(chosen_recipes)
                             input('\nPress any key to return to menu\n')
                         case '3': # view shopping list
-                            pass
+                            os.system('clear')
+                            view_shopping_list(chosen_recipes)
                         case '4':
                             os.system('clear')
                             print("Recipes selected for shopping list:\n")

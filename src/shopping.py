@@ -27,3 +27,11 @@ def select_recipe(recipe_list, chosen_recipes):
         print("No recipes saved")
         time.sleep(1.5)
 
+def view_shopping_list(chosen_recipes):
+    shopping_list = []
+    for recipe in chosen_recipes:
+        for ingredient in recipe.ingredients:
+            if not any(item['name'] == ingredient.name for item in shopping_list):
+                shopping_list.append({"name": ingredient['ingredient'].name, "unit": ingredient['ingredient'].unit, "quantity": ingredient['quantity']})
+    print(shopping_list)
+    input('\nPress any key to return to menu\n')
