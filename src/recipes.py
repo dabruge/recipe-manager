@@ -145,7 +145,7 @@ def delete_ingredient(recipe):
 def delete_recipe(recipe_list):
     while True:
         os.system('clear')
-        print("Saved recipes:\n")
+        print("Recipes:\n")
         list_recipes(recipe_list)
         recipe_to_delete = input("\nPlease enter name of recipe to delete (or 'exit' to cancel):\n").lower()
         if recipe_to_delete == 'exit':
